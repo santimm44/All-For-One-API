@@ -36,6 +36,8 @@ Things to turn in:
 
 NOT TO BE HOSTED ON VERCEL
 
-## Reviewed By
+## Reviewed By Thao Vang
 
 ## Comments
+
+Everything works. Some smaller nitpicks are you can do some validations for adding numbers (same as OddOrEven, just tryparsing). Other than that I think everything else is good.
