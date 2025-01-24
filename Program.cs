@@ -21,6 +21,22 @@ builder.Services.AddScoped<Magic8BallService>();
 builder.Services.AddScoped<GuessItService>();
 builder.Services.AddScoped<RestaurantPickerService>();
 
+//configuring cors policy for unrestricted access
+//this code will allow anyone with the link to access the endpoints
+builder.Services.AddCors(Options => {
+    Options.AddPolicy("AllowAll", 
+    policy =>
+    {
+        //allows access from any origin
+        //allows any http request a.k.a httpget, httppost, httpput et cetera
+        //Allows any header
+        policy.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +45,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//call the policy
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
